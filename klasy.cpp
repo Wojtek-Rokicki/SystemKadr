@@ -6,8 +6,16 @@ using namespace std;
 inzynier::inzynier(const string & in, string stan) : imieNazwisko(in), stanowisko(stan){}
 
 magister::magister(const string & in, string stan) : inzynier(in, stan){}
-
 magister::magister(const inzynier & inz) : inzynier(inz){}
+
+doktor::doktor(const string & in, string stan) : magister(in, stan){}
+doktor::doktor(const magister & mgr) : magister(mgr){}
+
+habdoktor::habdoktor(const string & in, string stan) : doktor(in, stan){}
+habdoktor::habdoktor(const doktor & dr) : doktor(dr){}
+
+profesor::profesor(const string & in, string stan) : habdoktor(in, stan){}
+profesor::profesor(const habdoktor & habdr) : habdoktor(habdr){}
 
 void inzynier::wyswietlInfo() const{
     cout<<rtytul1()<<" "<<rimieNazwisko()<<endl;
@@ -17,6 +25,21 @@ void inzynier::wyswietlInfo() const{
 void magister::wyswietlInfo() const{
     cout<<rtytul2()<<" ";
     inzynier::wyswietlInfo();
+}
+
+void doktor::wyswietlInfo() const{
+    cout<<rtytul3()<<" ";
+    magister::wyswietlInfo();
+}
+
+void habdoktor::wyswietlInfo() const{
+    cout<<rtytul4()<<" ";
+    doktor::wyswietlInfo();
+}
+
+void profesor::wyswietlInfo() const{
+    cout<<rtytul5()<<" ";
+    habdoktor::wyswietlInfo();
 }
 
 void inzynier::promuj(){
