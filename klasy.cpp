@@ -18,27 +18,27 @@ profesor::profesor(const string & in, string stan) : habdoktor(in, stan){}
 profesor::profesor(const habdoktor & habdr) : habdoktor(habdr){}
 
 void inzynier::wyswietlInfo() const{
-    cout<<rtytul1()<<" "<<rimieNazwisko()<<endl;
+    cout<<tytul()<<" "<<rimieNazwisko()<<endl;
     cout<<"Stanowisko: "<<rstanowisko()<<endl;
 }
 
 void magister::wyswietlInfo() const{
-    cout<<rtytul2()<<" ";
+    cout<<tytul()<<" ";
     inzynier::wyswietlInfo();
 }
 
 void doktor::wyswietlInfo() const{
-    cout<<rtytul3()<<" ";
+    cout<<tytul()<<" ";
     magister::wyswietlInfo();
 }
 
 void habdoktor::wyswietlInfo() const{
-    cout<<rtytul4()<<" ";
+    cout<<tytul()<<" ";
     doktor::wyswietlInfo();
 }
 
 void profesor::wyswietlInfo() const{
-    cout<<rtytul5()<<" ";
+    cout<<tytul()<<" ";
     habdoktor::wyswietlInfo();
 }
 

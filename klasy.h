@@ -9,12 +9,11 @@ using namespace std;
 class inzynier{
 private:
     string imieNazwisko;
-    const string tytul1 = "inz.";
     string stanowisko;
 public:
     inzynier(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska" );
     const string rimieNazwisko() const {return imieNazwisko;}
-    const string rtytul1() const {return tytul1;}
+    const string tytul() const {return "inz.";}
     string rstanowisko() const{return stanowisko;}
     void promuj();
     void degraduj();
@@ -23,42 +22,34 @@ public:
 };
 
 class magister : public inzynier{
-private:
-    string tytul2 = "mgr.";
 public:
     magister(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
     magister(const inzynier & inz);
-    const string rtytul2() const {return tytul2;}
+    const string tytul() const {return "mgr.";}
     virtual void wyswietlInfo() const;
 };
 
 class doktor : public magister{
-private:
-    string tytul3 = "dr.";
 public:
     doktor(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
     doktor(const magister & mgr);
-    const string rtytul3() const {return tytul3;}
+    const string tytul() const {return "dr.";}
     virtual void wyswietlInfo() const;
 };
 
 class habdoktor : public doktor{
-private:
-    string tytul4 = "hab.";
 public:
     habdoktor(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
     habdoktor(const doktor & dr);
-    const string rtytul4() const {return tytul4;}
+    const string tytul() const {return "hab.";}
     virtual void wyswietlInfo() const;
 };
 
 class profesor : public habdoktor{
-private:
-    string tytul5 = "prof.";
 public:
     profesor(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
     profesor(const habdoktor & habdr);
-    const string rtytul5() const {return tytul5;}
+    const string tytul() const {return "prof.";}
     virtual void wyswietlInfo() const;
 };
 
