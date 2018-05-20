@@ -9,48 +9,60 @@ using namespace std;
 class inzynier{
 private:
     string imieNazwisko;
-    string stanowisko;
+protected:
+    int stanowisko;
 public:
-    inzynier(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska" );
+    inzynier(const string & in = "brak imienia, nazwiska");
     const string rimieNazwisko() const {return imieNazwisko;}
     const string tytul() const {return "inz.";}
-    string rstanowisko() const{return stanowisko;}
-    void promuj();
-    void degraduj();
+    int rstanowisko() const{return stanowisko;}
+    virtual void zmienStan(int stan);
     virtual void wyswietlInfo() const;
     virtual ~inzynier() {};
 };
 
 class magister : public inzynier{
 public:
-    magister(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
+    magister(const string & in = "brak imienia, nazwiska");
     magister(const inzynier & inz);
     const string tytul() const {return "mgr.";}
+    virtual void zmienStan(int stan);
     virtual void wyswietlInfo() const;
 };
 
 class doktor : public magister{
 public:
-    doktor(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
+    doktor(const string & in = "brak imienia, nazwiska");
     doktor(const magister & mgr);
     const string tytul() const {return "dr.";}
+    virtual void zmienStan(int stan);
     virtual void wyswietlInfo() const;
 };
 
 class habdoktor : public doktor{
 public:
-    habdoktor(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
+    habdoktor(const string & in = "brak imienia, nazwiska");
     habdoktor(const doktor & dr);
     const string tytul() const {return "hab.";}
+    virtual void zmienStan(int stan);
     virtual void wyswietlInfo() const;
 };
 
 class profesor : public habdoktor{
 public:
-    profesor(const string & in = "brak imienia, nazwiska", string stan = "brak stanowiska");
+    profesor(const string & in = "brak imienia, nazwiska");
     profesor(const habdoktor & habdr);
     const string tytul() const {return "prof.";}
+    virtual void zmienStan(int stan);
     virtual void wyswietlInfo() const;
 };
 
 #endif
+
+//dziekan co najmniej dr hab
+//prodziekan co najmniej dr
+
+//dyr. co najmniej dr hab
+//kierownik zakl co najmniej dr hab
+
+//zast co najmniej mgr
