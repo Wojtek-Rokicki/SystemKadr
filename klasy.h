@@ -11,14 +11,17 @@ private:
     string imieNazwisko;
 protected:
     int stanowisko;
+    int przynaleznosc;
 public:
     inzynier(const string & in = "brak imienia, nazwiska");
     const string rimieNazwisko() const {return imieNazwisko;}
     const string tytul() const {return "inz.";}
     int rstanowisko() const{return stanowisko;}
+    int rprzynaleznosc() const{return przynaleznosc;}
+    void zmienPrzynaleznosc(int przynal);
     virtual void zmienStan(int stan);
     virtual void wyswietlInfo() const;
-    virtual ~inzynier() {};
+    virtual ~inzynier() {cout<<"Usunieto: "<<rimieNazwisko()<<endl;};
 };
 
 class magister : public inzynier{
